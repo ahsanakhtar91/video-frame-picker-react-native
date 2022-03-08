@@ -8,6 +8,9 @@ require 'json'
 podfile_properties = JSON.parse(File.read('./Podfile.properties.json')) rescue {}
 
 target 'videoframepickerreactnative' do
+  
+  pod 'react-native-ffmpeg/full', :podspec => '../node_modules/react-native-ffmpeg/react-native-ffmpeg.podspec'
+
   use_expo_modules!
   config = use_native_modules!
 
