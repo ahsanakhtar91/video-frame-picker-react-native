@@ -5,8 +5,6 @@ PODS:
     - ExpoModulesCore
   - EXConstants (13.0.2):
     - ExpoModulesCore
-  - EXErrorRecovery (3.0.5):
-    - ExpoModulesCore
   - EXFileSystem (13.1.4):
     - ExpoModulesCore
   - EXFont (10.0.5):
@@ -30,7 +28,7 @@ PODS:
     - React-jsi (= 0.64.3)
     - ReactCommon/turbomodule/core (= 0.64.3)
   - glog (0.3.5)
-  - mobile-ffmpeg-full (4.4)
+  - mobile-ffmpeg-full-gpl (4.4)
   - RCT-Folly (2020.01.13.00):
     - boost-for-react-native
     - DoubleConversion
@@ -224,9 +222,14 @@ PODS:
     - React-jsi (= 0.64.3)
     - React-perflogger (= 0.64.3)
   - React-jsinspector (0.64.3)
-  - react-native-ffmpeg/full (0.5.2):
-    - mobile-ffmpeg-full (= 4.4)
+  - react-native-ffmpeg/full-gpl (0.5.2):
+    - mobile-ffmpeg-full-gpl (= 4.4)
     - React
+  - react-native-video (5.2.0):
+    - React-Core
+    - react-native-video/Video (= 5.2.0)
+  - react-native-video/Video (5.2.0):
+    - React-Core
   - React-perflogger (0.64.3)
   - React-RCTActionSheet (0.64.3):
     - React-Core/RCTActionSheetHeaders (= 0.64.3)
@@ -297,7 +300,6 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
-  - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
@@ -320,7 +322,8 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-ffmpeg/full (from `../node_modules/react-native-ffmpeg/react-native-ffmpeg.podspec`)
+  - react-native-ffmpeg/full-gpl (from `../node_modules/react-native-ffmpeg/react-native-ffmpeg.podspec`)
+  - react-native-video (from `../node_modules/react-native-video/react-native-video.podspec`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -338,7 +341,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
-    - mobile-ffmpeg-full
+    - mobile-ffmpeg-full-gpl
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -347,8 +350,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-application/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
-  EXErrorRecovery:
-    :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
@@ -391,6 +392,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-ffmpeg:
     :podspec: "../node_modules/react-native-ffmpeg/react-native-ffmpeg.podspec"
+  react-native-video:
+    :path: "../node_modules/react-native-video/react-native-video.podspec"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -423,7 +426,6 @@ SPEC CHECKSUMS:
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   EXApplication: 54fe5bd6268d697771645e8f1aef8b806a65247a
   EXConstants: 88bf79622fbd9b476c96d8ec57fe97ca44fe8e3c
-  EXErrorRecovery: b0d7582714a2cc896e94a2308a356f94dbf14ef7
   EXFileSystem: 08a3033ac372b6346becf07839e1ccef26fb1058
   EXFont: 2597c10ac85a69d348d44d7873eccf5a7576ef5e
   EXKeepAwake: bf48d7f740a5cd2befed6cf9a49911d385c6c47d
@@ -433,7 +435,7 @@ SPEC CHECKSUMS:
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
   FBReactNativeSpec: a27a9ee973d4af3270a91f06733bf06944f726d2
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
-  mobile-ffmpeg-full: 505c583d91ac1c4fb2b015787e69d83f83fb8f29
+  mobile-ffmpeg-full-gpl: 77de728206f08f30c70f530b18abb4e8f6413eb6
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: d34bf57e17cb6e3b2681f4809b13843c021feb6c
   RCTTypeSafety: 8dab4933124ed39bb0c1d88d74d61b1eb950f28f
@@ -446,6 +448,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: df6abc9fafbecb8e5b7a5fbc5e6d4bd017d594d5
   React-jsinspector: 34e23860273a23695342f58eed3ffd3ba10c31e0
   react-native-ffmpeg: 587fa045f985d775107f4b8cbb6c79df0ad68e63
+  react-native-video: a4c2635d0802f983594b7057e1bce8f442f0ad28
   React-perflogger: cc76a4254d19640f1d8ad1c66fdee800414b805c
   React-RCTActionSheet: 7448f049318d8d7e8a9a1ebb742ada721757eea8
   React-RCTAnimation: fb9b3fa1a4a9f5e6ab01b3368693ce69860ba76a
@@ -460,6 +463,6 @@ SPEC CHECKSUMS:
   ReactCommon: 8fea6422328e2fc093e25c9fac67adbcf0f04fb4
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
-PODFILE CHECKSUM: 827fb4be4103024fd2734f4c53cb7916b3fb6cab
+PODFILE CHECKSUM: 3489fa48749fbd11ce930cebd9b432246974ac84
 
 COCOAPODS: 1.11.2

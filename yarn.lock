@@ -1104,6 +1104,28 @@
     xcode "^3.0.1"
     xml2js "0.4.23"
 
+"@expo/config-plugins@^4.0.14":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.1.0.tgz#0365e2e51e2e3e3b4e7db1fbbada5be661798be6"
+  integrity sha512-+Uq7kzi1StUZZZivnnqNV6+v8b+SMF6MDgH+cEZxCoM9uwLXOK0rTAURzBGtl+C6EEbKnoZmnKGuzABBGPRP7A==
+  dependencies:
+    "@expo/config-types" "^44.0.0"
+    "@expo/json-file" "8.2.34"
+    "@expo/plist" "0.0.17"
+    "@expo/sdk-runtime-versions" "^1.0.0"
+    "@react-native/normalize-color" "^2.0.0"
+    chalk "^4.1.2"
+    debug "^4.3.1"
+    find-up "~5.0.0"
+    fs-extra "9.0.0"
+    getenv "^1.0.0"
+    glob "7.1.6"
+    resolve-from "^5.0.0"
+    semver "^7.3.5"
+    slash "^3.0.0"
+    xcode "^3.0.1"
+    xml2js "0.4.23"
+
 "@expo/config-types@^43.0.1":
   version "43.0.1"
   resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-43.0.1.tgz#3e047dccb371741a540980eaff26fb0c95039c30"
@@ -1532,6 +1554,21 @@
   version "15.7.4"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
+
+"@types/react-native-video@^5.0.12":
+  version "5.0.12"
+  resolved "https://registry.yarnpkg.com/@types/react-native-video/-/react-native-video-5.0.12.tgz#a90c00ec222923430d5f576cca337f49d11c148a"
+  integrity sha512-ohc2zsFGF+AQbd1joRq+dk4lJHimaRMDjYofCdALBRh0SPKQtNu2NQHcTfgyJDrFVL1yh01G++Z9WjofySJABQ==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*":
+  version "0.67.2"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.67.2.tgz#801656be65b875cf215cd09de208436df92fa356"
+  integrity sha512-DyBkq7kw1UngzfvBr8WE41+hL/TWpxOZVaeABJz6Si7DmpT0Rq6vJCYjVaR85ViKSYJvIHpzxYfp0dD+lb3ctA==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react-native@~0.64.12":
   version "0.64.24"
@@ -2425,6 +2462,11 @@ electron-to-chromium@^1.4.76:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.77.tgz#c26e454cb8721d4ebdae3e276c57cd32e51c32ed"
   integrity sha512-fiDxw8mO9Ph1Z0bjX2sFTPpi0J0QkOiwOJF+5Q0J0baNc/F9lLePAvDPlnoxvbUYYMizqrKPeotRRkJ9LtxAew==
 
+eme-encryption-scheme-polyfill@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/eme-encryption-scheme-polyfill/-/eme-encryption-scheme-polyfill-2.0.3.tgz#2ca6e06480e06cceb5e50efd27943ac46c959878"
+  integrity sha512-44CNFMsqzHdKHrzWxlS7xZ8KUHn5XutBqpmCuWzNIynmAyFInHrrD3ozv/RvK9ZhgV6QY6Easx8EWAmxteNodg==
+
 emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
@@ -2566,6 +2608,41 @@ expo-constants@~13.0.2:
     "@expo/config" "^6.0.6"
     uuid "^3.3.2"
 
+expo-dev-client@~0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-0.8.4.tgz#c521da0818ee846e24bfc96a901350342eba5ded"
+  integrity sha512-FB5ouz9dMyccnuYbuAi0EcTNdRh+5vPGuOuhYWo5Fq3SBTU8ZdKQmcMidAoHOrYgMzQWiT+S7ypt0AjxPSgHnA==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-launcher "0.10.4"
+    expo-dev-menu "0.9.3"
+    expo-dev-menu-interface "0.5.3"
+    expo-manifests "~0.2.2"
+    expo-updates-interface "~0.5.0"
+
+expo-dev-launcher@0.10.4:
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-0.10.4.tgz#b4a6f01b3aa10afa142fb6c91b18c6983433d8fd"
+  integrity sha512-ItqkxzzwgeK4+o9hyV3/YAvPxiVIXtcOWPcjpuPxYDtLigF4D4sMSqRb1aBA+7Nmxoc6EuLASZnvge0WPco+cA==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-menu "0.9.3"
+    resolve-from "^5.0.0"
+    semver "^7.3.5"
+
+expo-dev-menu-interface@0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.5.3.tgz#d1a43ef450d6c727780ed3018376046f0a185980"
+  integrity sha512-i1d7vtKILnq7mo6r5jSQ++UxkpP+VX/IkOAKuWGeB/B32pCTFCD32rplymFS3qPQ+vlmb5zKl5yhYSYZSVobhg==
+
+expo-dev-menu@0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-0.9.3.tgz#d4572d86c28b19f4f807534091122b5077821cba"
+  integrity sha512-ZUCDSO2rAhFOKuCXdwBf09VVkvAqZBhjA36b7YkwfvKxQ4nb6ZbB/JRCdtxLcre5hDJX1ya3YMNPY3R0/WCBbg==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-menu-interface "0.5.3"
+
 expo-error-recovery@~3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/expo-error-recovery/-/expo-error-recovery-3.0.5.tgz#1802b733e998606a8fcfb0abe6682c334319ef75"
@@ -2586,10 +2663,22 @@ expo-font@~10.0.5:
   dependencies:
     fontfaceobserver "^2.1.0"
 
+expo-json-utils@~0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/expo-json-utils/-/expo-json-utils-0.2.1.tgz#a8d15181e361f3fc782d5241ce381851bab4465b"
+  integrity sha512-wU7gXGtaUlyxFLTp5e3PbnJB90/92r6gEc2BuMHdqE0OxhTQKyKzRszk2szCsdkeI7L4XntvZhCs1Px+gL1gvA==
+
 expo-keep-awake@~10.0.2:
   version "10.0.2"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-10.0.2.tgz#706bda839782bb3e8ad4cbe43bde471a56368813"
   integrity sha512-Ro1lgyKldbFs4mxhWM+goX9sg0S2SRR8FiJJeOvaRzf8xNhrZfWA00Zpr+/3ocCoWQ3eEL+X9UF4PXXHf0KoOg==
+
+expo-manifests@~0.2.2:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/expo-manifests/-/expo-manifests-0.2.4.tgz#28aa7a0b21d8b932e1a49c836cfc31b5a9cd1f9c"
+  integrity sha512-8PrMPyvElKXflYd1ApDHJR9JF0SR996iVEVQgHAMLzVP7OqEAM6dQaFeqrRqVn/DSsxEWkJTpxv8WJ5NWrT4Lg==
+  dependencies:
+    expo-json-utils "~0.2.0"
 
 expo-modules-autolinking@0.5.5, expo-modules-autolinking@~0.5.1:
   version "0.5.5"
@@ -2622,6 +2711,11 @@ expo-status-bar@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.2.0.tgz#16e73205da563f9536f562e439081e30e318a82e"
   integrity sha512-pVZZ/kDCXFK79E4dCtRecs3XLC8aiwlciutSd/fFmUPJSQZ1Txia6hlKajPt0GAYft8/YnT0V3URXzWZOBniYQ==
+
+expo-updates-interface@~0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.5.1.tgz#b390622f60b353bb352def895a32dc800a21a4dc"
+  integrity sha512-RLvC69o1BkhHP6hNaWiIvSiTgXABB9v4HnoietoXKFHlAyxlQCupy6ki164KpZNrOS/PFJ2WWqZOvKfiyDVO+w==
 
 expo@~44.0.0:
   version "44.0.6"
@@ -3491,6 +3585,11 @@ jsonify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
   integrity sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM=
+
+keymirror@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/keymirror/-/keymirror-0.1.1.tgz#918889ea13f8d0a42e7c557250eee713adc95c35"
+  integrity sha1-kYiJ6hP40KQufFVyUO7nE63JXDU=
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -4539,6 +4638,15 @@ react-native-ffmpeg@^0.5.2:
   resolved "https://registry.yarnpkg.com/react-native-ffmpeg/-/react-native-ffmpeg-0.5.2.tgz#4c60fa4e773ae82ed59628a5f23dd86f74f1c8f5"
   integrity sha512-YxKWI9kPo4nDtAzNO+MIMIu56rfaixJrviQBKvdvmFD09oWH0GhKurJ+uJOvTbN3T7eEYCE0kUzK1puPDsniAA==
 
+react-native-video@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-5.2.0.tgz#c3f2c541775f4fda7e0d26d75a6fb59819b13d5e"
+  integrity sha512-5SK1lxyzrCkZF+WuxUxLR1Pt65E0rsWB1w1GrGxSLdC9zWYBumcmuHl+wPJ7UQvznjaH2Ze7uU1R3arejI7+WQ==
+  dependencies:
+    keymirror "^0.1.1"
+    prop-types "^15.7.2"
+    shaka-player "^2.5.9"
+
 react-native-web@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.17.1.tgz#90d473c89dd99b88bc9830b2a9fcdd2fc5f04902"
@@ -4932,6 +5040,13 @@ setprototypeof@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
+
+shaka-player@^2.5.9:
+  version "2.5.23"
+  resolved "https://registry.yarnpkg.com/shaka-player/-/shaka-player-2.5.23.tgz#db92d1c6cf2314f0180a2cec11b0e2f2560336f5"
+  integrity sha512-3MC9k0OXJGw8AZ4n/ZNCZS2yDxx+3as5KgH6Tx4Q5TRboTBBCu6dYPI5vp1DxKeyU12MBN1Zcbs7AKzXv2EnCg==
+  dependencies:
+    eme-encryption-scheme-polyfill "^2.0.1"
 
 shallow-clone@^3.0.0:
   version "3.0.1"
