@@ -1,32 +1,32 @@
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  Animated,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-  PanResponder,
-  ActivityIndicator,
-} from "react-native";
+import { useEffect, useState } from "react";
+import { Image, StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { Asset } from "expo-asset";
+import { getCurrentFrameWithDecimalZeroes, getFrameGaps } from "./src/utils";
 import { RNFFmpeg, RNFFmpegConfig } from "react-native-ffmpeg";
+import VideoFramesSrcubber from "./src/components/VideoFramesScrubber";
 
 export default function App() {
   const [inputVideoPath, setInputVideoPath] = useState("");
-  const [framesPath, setFramesPath] = useState("");
-  const [totalFrames, setTotalFrames] = useState(0);
+  const [framesPath, setFramesPath] = useState(
+    "file:///Users/ahsanakhtar/Library/Developer/CoreSimulator/Devices/CEEF04DC-48BA-4EF7-92B2-AEA38344E7E1/data/Containers/Data/Application/E34F6E7D-5F26-4B30-A5E2-7B0ADE54445F/Library/Caches"
+  );
+  const [totalFrames, setTotalFrames] = useState(24);
   const [currentFrame, setCurrentFrame] = useState(1);
 
-  const imageFilePrefix = "video-frame-";
-  const imageFileExtentsion = "jpeg";
+  const imageFilePrefix = "video-frame-img-";
+  const imageFileExtension = "jpeg";
   const totalDecimalZeroes = 7;
+
+  const backgroundFramesMultiplier = Math.ceil(totalFrames / 7) + 1;
+  const backgroundPreviewFrames = totalFrames
+    ? getFrameGaps(backgroundFramesMultiplier, backgroundFramesMultiplier * 7)
+    : [];
 
   useEffect(() => {
     const proceed = async () => {
       const inputVideo = await Asset.loadAsync(
-        require("./src/input-video.mp4")
+        require("./src/video/input-video.mp4")
       );
       const inputVideoPath = inputVideo[0].localUri;
 
@@ -35,40 +35,6 @@ export default function App() {
     proceed();
   }, []);
 
-  const pan = useRef(new Animated.ValueXY()).current;
-  const panResponder = useMemo(
-    () =>
-      PanResponder.create({
-        onMoveShouldSetPanResponder: () => true,
-        onPanResponderGrant: () => {
-          pan.setOffset({
-            x: pan.x._value,
-            y: pan.y._value,
-          });
-        },
-        onPanResponderMove: (e, gestureState) => {
-          const updatedFrame = parseInt((e.nativeEvent.pageX / 10).toString());
-          Animated.event(
-            [
-              null,
-              {
-                dx: pan.x,
-                dy: pan.y,
-              },
-            ],
-            { useNativeDriver: false }
-          )(e, gestureState);
-        },
-        onPanResponderRelease: (e, gestureState) => {
-          pan.flattenOffset();
-          const updatedFrame = parseInt((e.nativeEvent.pageX / 10).toString());
-          console.log(updatedFrame);
-          setCurrentFrame(updatedFrame);
-        },
-      }),
-    [currentFrame]
-  );
-
   useEffect(() => {
     if (inputVideoPath) {
       const inputVideoPathArr = inputVideoPath?.split("/");
@@ -76,8 +42,9 @@ export default function App() {
       const outputFramesPath = inputVideoPathArr?.join("/");
 
       if (!framesPath) {
+        return;
         RNFFmpeg?.executeAsync(
-          `-i ${inputVideoPath} -r 30 ${outputFramesPath}/${imageFilePrefix}%0${totalDecimalZeroes}d.${imageFileExtentsion}`,
+          `-y -i ${inputVideoPath} -r 30 ${outputFramesPath}/${imageFilePrefix}%0${totalDecimalZeroes}d.${imageFileExtension}`,
           (execution) => {
             if (execution.returnCode === 0) {
               console.log("SUCCESS", execution.executionId);
@@ -85,10 +52,6 @@ export default function App() {
                 setFramesPath(outputFramesPath ?? "");
                 setTotalFrames((output.match(/frame=/gi)?.length ?? 0) - 1);
                 setCurrentFrame(1);
-                console.log("outputFramesPath:", outputFramesPath);
-                console.log(
-                  `TOTAL FRAMES: ${(output.match(/frame=/gi)?.length ?? 0) - 1}`
-                );
               });
             } else {
               console.log("ERROR:", execution.returnCode);
@@ -99,76 +62,34 @@ export default function App() {
     }
   }, [inputVideoPath]);
 
-  const getCurrentFrameWithDecimalZeroes = (frameNumber: number) => {
-    return ("0".repeat(totalDecimalZeroes) + frameNumber).slice(
-      -totalDecimalZeroes
-    );
-  };
-
   return (
-    <View style={styles.container}>
+    <View style={styles.rootContainer}>
       <StatusBar style="auto" />
-
       {inputVideoPath && framesPath ? (
         <>
-          <View style={{}}>
+          <View>
             <Image
               source={{
                 uri: `${framesPath}/${imageFilePrefix}${getCurrentFrameWithDecimalZeroes(
-                  currentFrame
-                )}.${imageFileExtentsion}`,
+                  currentFrame,
+                  totalDecimalZeroes
+                )}.${imageFileExtension}`,
               }}
               style={{ height: 400, width: 250, backgroundColor: "#000" }}
             />
           </View>
 
-          <View style={styles.container2} key={new Date().getTime()}>
-            {[1, 2, 3, 4, 5, 6, 9].map((frameNumber, i) => (
-              <ImageBackground
-                key={i}
-                source={{
-                  uri: `${framesPath}/${imageFilePrefix}${getCurrentFrameWithDecimalZeroes(
-                    frameNumber
-                  )}.${imageFileExtentsion}`,
-                }}
-                style={{
-                  backgroundColor: "#000",
-                  width: 50,
-                  height: 80,
-                  opacity: 0.7,
-                }}
-                width={50}
-                height={80}
-              />
-            ))}
-            <View>
-              <Animated.View
-                style={{
-                  transform: [{ translateX: pan.x }],
-                }}
-                {...panResponder.panHandlers}
-              >
-                <Image
-                  source={{
-                    uri: `${framesPath}/${imageFilePrefix}${getCurrentFrameWithDecimalZeroes(
-                      currentFrame
-                    )}.${imageFileExtentsion}`,
-                  }}
-                  style={{
-                    backgroundColor: "#000",
-                    width: 50,
-                    height: 80,
-                    borderColor: "#ddd",
-                    borderRadius: 10,
-                    borderWidth: 3,
-                    position: "absolute",
-                  }}
-                  width={50}
-                  height={80}
-                />
-              </Animated.View>
-            </View>
-          </View>
+          <VideoFramesSrcubber
+            currentFrame={currentFrame}
+            onFrameChanged={(updatedFrame: number) =>
+              setCurrentFrame(updatedFrame)
+            }
+            backgroundPreviewFrames={backgroundPreviewFrames}
+            framesPath={framesPath}
+            totalDecimalZeroes={totalDecimalZeroes}
+            imageFileExtension={imageFileExtension}
+            imageFilePrefix={imageFilePrefix}
+          />
         </>
       ) : (
         <>
@@ -184,19 +105,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  rootContainer: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  container2: {
-    // flex: 1,
-    marginTop: 60,
-    backgroundColor: "#000",
-    width: "90%",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
   },
 });
