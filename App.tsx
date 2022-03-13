@@ -8,10 +8,8 @@ import VideoFramesSrcubber from "./src/components/VideoFramesScrubber";
 
 export default function App() {
   const [inputVideoPath, setInputVideoPath] = useState("");
-  const [framesPath, setFramesPath] = useState(
-    "file:///Users/ahsanakhtar/Library/Developer/CoreSimulator/Devices/CEEF04DC-48BA-4EF7-92B2-AEA38344E7E1/data/Containers/Data/Application/E34F6E7D-5F26-4B30-A5E2-7B0ADE54445F/Library/Caches"
-  );
-  const [totalFrames, setTotalFrames] = useState(24);
+  const [framesPath, setFramesPath] = useState("");
+  const [totalFrames, setTotalFrames] = useState(0);
   const [currentFrame, setCurrentFrame] = useState(1);
 
   const imageFilePrefix = "video-frame-img-";
@@ -42,7 +40,6 @@ export default function App() {
       const outputFramesPath = inputVideoPathArr?.join("/");
 
       if (!framesPath) {
-        return;
         RNFFmpeg?.executeAsync(
           `-y -i ${inputVideoPath} -r 30 ${outputFramesPath}/${imageFilePrefix}%0${totalDecimalZeroes}d.${imageFileExtension}`,
           (execution) => {
