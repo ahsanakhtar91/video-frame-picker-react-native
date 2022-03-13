@@ -3,8 +3,6 @@ Video Frame Picker (React Native)
 
 ------------------------------
 
-<code>**Live Demo**: https://www.loom.com/share/aa0eb589ae654ec8abefb22ababd5c6a</code>
-
 This is an example **React Native** application in which a **picker/scrubber component** is created that allows to select a frame from a video by scrubbing/swiping through all of the image frames of the video, which is similar to the cover frame picker screen in **Instagram** which appears while uploading a video and asks you to select an image from the video to be treated as the cover/thumbnail of the video. 
 
 So, the Video Frame Picker is built as a replica of that screen. The technologies used to build this app are **React Native**, **TypeScript**, **Expo**, **XCode**, **React Hooks**. This app is specifically tested on **iOS** and the most highlighted library used to build it is **[react-native-ffmpeg](https://www.npmjs.com/package/react-native-ffmpeg)**. The features of this app are:  
